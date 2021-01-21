@@ -1,5 +1,6 @@
+//  https://github.com/Badhan112/javascriptAssignment
 
-//this function used to convert kilometer to Meter
+// this function used to convert kilometer to Meter
 function kilometerToMeter(kilometer){
     var meter;
 
@@ -36,7 +37,7 @@ function budgetCalculator(numberOfClock, numberOfPhone, numberOfLaptop){
     }
 }
 
-//This function used to calculate Total cost in hotel
+// This function used to calculate Total cost in hotel
 function hotelCost(numberOfDay){
     var totalCost;
     var firstTenDayCost = 100;
@@ -71,7 +72,47 @@ function hotelCost(numberOfDay){
 
 }
 
-//calling kilometerToMeter() function in different input
+// This function return the Large name of an array of name
+function megaFriend(arrayOfNames){
+    var largeName;
+    var isValidValue = true;
+
+    if(arrayOfNames instanceof Array !== true){
+        console.log('Invalid Input! Only Array type input is acceptable');
+    }
+    else if(arrayOfNames.length == 0){
+        console.log('Array of name is Empty');
+    }
+    else{
+        // checking all property of array is Sting or not
+        for(var i = 0; i < arrayOfNames.length; i++){
+            if(typeof arrayOfNames[i] !== "string" || arrayOfNames[i] === ''){
+                isValidValue = false;
+                break;
+            }
+        }
+
+        if(isValidValue == true){
+            largeName = arrayOfNames[0];
+
+            // checking which String is Larger
+            for(var i = 0; i < arrayOfNames.length - 1; i++){
+                if(arrayOfNames[i].length < arrayOfNames[i+1].length){
+                    largeName = arrayOfNames[i+1];
+                }
+            }
+
+            return largeName;
+
+        }
+        else{
+            console.log('Invalid Array Property! Empty Value not acceptable or Every Property must need to be a String');
+        }
+    }
+}
+
+
+// calling kilometerToMeter() function in different input
 var distanceInMeter = kilometerToMeter(111);
 console.log(distanceInMeter);
 
@@ -88,7 +129,7 @@ distanceInMeter = kilometerToMeter(null);
 console.log(distanceInMeter);
 
 
-//calling budgetCalculator() function in different input
+// calling budgetCalculator() function in different input
 var budgetForNewYear = budgetCalculator(5, 3, 2);
 console.log(budgetForNewYear);
 
@@ -101,7 +142,7 @@ console.log(budgetForNewYear);
 budgetForNewYear = budgetCalculator(null, 3, 2);
 console.log(budgetForNewYear);
 
-//calling hotelCost() function in different input
+// calling hotelCost() function in different input
 var myHotelCost = hotelCost(9);
 console.log(myHotelCost);
 
@@ -122,3 +163,44 @@ console.log(myHotelCost);
 
 myHotelCost = hotelCost();
 console.log(myHotelCost);
+
+console.log('\n');
+
+// calling megaFriend() function in different input
+var myFriendList;
+
+myFriendList = ['Badhan', 'David', 'Jhon', 'Steve Jobs'];
+var largestFriendName = megaFriend(myFriendList);
+console.log(largestFriendName);
+
+myFriendList = ['Badhan', 'David', '', 'Steve Jobs'];
+var largestFriendName = megaFriend(myFriendList);
+console.log(largestFriendName);
+
+myFriendList = [];
+largestFriendName = megaFriend(myFriendList);
+console.log(largestFriendName);
+
+myFriendList = {'FirstName' : 'Badhan'};
+largestFriendName = megaFriend(myFriendList);
+console.log(largestFriendName);
+
+myFriendList = ['Tesla', 21];
+largestFriendName = megaFriend(myFriendList);
+console.log(largestFriendName);
+
+myFriendList = 112;
+largestFriendName = megaFriend(myFriendList);
+console.log(largestFriendName);
+
+myFriendList = 'Bangladesh';
+largestFriendName = megaFriend(myFriendList);
+console.log(largestFriendName);
+
+myFriendList = null;
+largestFriendName = megaFriend(myFriendList);
+console.log(largestFriendName);
+
+myFriendList = undefined;
+largestFriendName = megaFriend(myFriendList);
+console.log(largestFriendName);
